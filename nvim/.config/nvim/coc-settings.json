@@ -1,0 +1,77 @@
+{
+  "solargraph.diagnostics": true,
+  "solargraph,autoformat": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true,
+  "diagnostic.checkCurrentLine": true,
+  "coc.preferences.useQuickfixForLocations": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "elm",
+    "javascriptreact",
+    "css",
+    "Markdown"
+  ],
+ // "elixir.pathToElixirLS": "",
+ "codeLens.enable": true,
+ "languageserver": {
+     "elixirLS": {
+    "command": "/Users/pedro/.elixir-ls/language_server.sh",
+    "filetypes": ["elixir", "eelixir"]
+  },
+
+    "lua": {
+      "command": "/home/pedro/.lua-ls/lua-language-server/bin/lua-language-server",
+      "args": ["-E", "/home/pedro/.lua-ls/lua-language-server/bin/main.lua"],
+      "rootPatterns": [".git"],
+      "filetypes": ["lua"],
+      "settings": {
+        "Lua": {
+          "workspace.library": {
+            "/usr/share/nvim/runtime/lua": true,
+            "/usr/share/nvim/runtime/lua/vim": true,
+            "/usr/share/nvim/runtime/lua/vim/lsp": true
+          },
+          "diagnostics": {
+            "globals": [ "vim" ]
+          }  
+        }
+      }
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+      "rootPatterns": [".ccls-root", "compile_commands.json"],
+      "initializationOptions": {
+        "cache": {
+          "directory": ".ccls-cache"
+        },
+        "client": {
+          "snippetSupport": true
+        },
+        "clang": {
+          "extraArgs": [
+            "-stdlib=libstdc++",
+            "-isystem/usr/local/include",
+            "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1",
+            "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.1.6/include",
+            "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
+            "-isysroot/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+            "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"
+          ],
+          "resourceDir": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.1.6"
+        }
+      }
+    }
+    },
+      "python.linting.pylintEnabled": false,
+      "python.linting.pep8Enabled": true,
+      "python.linting.enabled": true,
+      "diagnostic.messageTarget": "echo",
+      "signature.target": "echo",
+      "javascript.suggestionActions.enabled": false,
+      "typescript.suggestionActions.enabled": false,
+      "prettier.printWidth": 120,
+      "prettier.singleQuote": true,
+      "svelte.enable-ts-plugin": true
+    }

@@ -1,0 +1,46 @@
+[user]
+	name = Pbotsaris
+	email = pedro@antfood.com
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+
+# This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
+[include]
+  path = /Users/pedro/.netlify/helper/git-config
+
+[alias]
+    a = add
+    aa = add -A
+    b = branch
+    bd = branch -D
+    c = commit -m
+    co = checkout
+    cob = checkout -b
+    d = diff
+    f = fetch
+    pl = pull
+    s = status
+    l = log --format=oneline
+    ps = push
+    rb = rebase
+    rbi = rebase -i 
+		sw = show --pretty="" --name-only
+    ls = ls-tree --full-tree -r --name-only HEAD
+    rm = rm --cached 
+    count = count-objects -vH
+      
+[color]
+	ui = true
+[core]
+	editor = nvim
+
+# This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
+[include]
+  path = /Users/pedro/Library/Preferences/netlify/helper/git-config
+[credential]
+	helper = cache
+[init]
+	defaultBranch = main

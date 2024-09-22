@@ -1,0 +1,82 @@
+#!/bin/bash
+
+RED='\033[1;35m'
+GREY='\033[0;37m'
+NC='\033[0m'
+
+spc=" "
+des="$(tput setaf 5)"
+cm="$(tput setaf 7)$(tput setab 5)"
+bld="$(tput bold)"
+end="$(tput sgr0)"
+
+
+if [ "$1" == "-d" ];then
+		echo "tmux - execute with no arg for more info"
+else
+
+if [ -z "$1" ]; then
+		echo " "
+		echo "$bld * AVAILABLE TMUX COMMANDS: $end"
+		echo " "
+
+		printf "	$bld $ $end t n $des  <sesh-name> $end\t\t\t Create new session\n"
+		printf "	$bld $ $end t d $des  <sesh-name> $end\t\t\t Delete session\n"
+		printf "	$bld $ $end t a $des  <sesh-name> $end\t\t\t attach/open session\n"
+		printf "	$bld $ $end t i $des  <sesh-name> $end\t\t\t See all sessions, panes and windows\n"
+		printf "	$bld $ $end t ls $des <sesh-name> $end\t\t\t List all sessions\n"
+		printf "	$bld $ $end t s $end\t\t\t\t Source config\n"
+		printf "	$bld $ $end t c $spc $spc $spc $spc $psc $spc \t\t\t$end Open config\n"
+		echo " "
+fi
+
+if [ "$1" == "c" ];then
+		nvim ~/.config/tmux/tmux.conf
+fi
+
+if [ "$1" == "n" ]; then
+		if [ -z $2 ];then 
+				echo "enter a session name:"
+				echo		t n "<session-name>"
+		else
+		tmux new -s "$2"
+		fi
+fi
+
+
+if [ "$1" == "d" ]; then
+		if [ -z $2 ];then 
+				echo "enter a session name:"
+				echo		t d "<session-name>"
+		else
+		tmux kill-session -t "$2"
+		fi
+fi
+
+
+if [ "$1" == "a" ]; then
+		if [ -z $2 ];then 
+				echo "enter a session name:"
+				echo		t a "<session-name>"
+		else
+		tmux attach -t "$2"
+		fi
+fi
+
+if [ "$1" == "s" ]; then
+   echo "Sourcing ""$HOME""/.config/tmux/tmux.conf..."
+   tmux source-file "$HOME""/.config/tmux/tmux.conf"
+fi
+	
+if [ "$1" == "i" ]; then
+		tmux info
+fi
+	
+
+if [ "$1" == "ls" ]; then
+		tmux ls 
+fi
+
+fi
+
+

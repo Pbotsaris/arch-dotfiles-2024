@@ -1,0 +1,44 @@
+Host *
+   AddKeysToAgent yes
+   IgnoreUnknown UseKeychain
+   UseKeychain yes
+   IdentityFile ~/.ssh/id_rsa
+
+Host labs.antfood.com
+   HostName 206.189.0.154
+   IdentityFile ~/.ssh/id_rsa
+   User pb
+
+
+Host raul.antfood.com
+   HostName 188.166.91.160
+   IdentityFile ~/.ssh/id_rsa
+   User pb
+
+   # user: pb / pb@antegration
+Host antegrations.com
+   HostName 188.166.91.160
+   IdentityFile ~/.ssh/id_rsa
+   User pb
+
+Host speak.antfood.com
+   HostName 142.93.244.165
+   IdentityFile ~/.ssh/id_rsa
+   User pb
+
+Host widgets.antfood.com
+   HostName 167.172.226.200
+   IdentityFile ~/.ssh/id_rsa
+   User pb
+
+Host otherwidget.antfood.com
+   HostName 167.172.226.200
+   IdentityFile ~/.ssh/gh_action_rsa
+   User pb
+
+Host github.com
+   HostName github.com
+   IdentityFile ~/.ssh/id_rsa
+
+Host *
+   IdentityAgent ~/.1password/agent.sock

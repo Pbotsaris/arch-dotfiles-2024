@@ -1,0 +1,20 @@
+#!/bin/bash
+
+CYAN='\033[0;36m'
+ORANGE='\033[0;33m'
+NC='\033[0m'
+
+if [[ $1 == "--help" ||  $# -eq 0 ]]; then
+  echo ""
+  echo "Usage: gen-compile-commands [CMAKE_BUILD_PATH]"
+  echo ""
+  echo -e "${ORANGE}gen-compile-commands${NC} leverages ${CYAN}'compiledb'${NC} to create a compile_commands.json for clangd completions."
+  echo -e "${CYAN}compiledb${NC} must be installed to run this script:"
+  echo ""
+  echo -e "${CYAN}\t$ pip install compiledb ${NC}"
+else
+
+  echo -e " Generating a ${ORANGE}compile_commands.json${NC} to your current directory: ${CYAN}$PWD${NC}..."
+  cd $1; compiledb make; cp compile_commands.json ..; cd ..
+fi
+

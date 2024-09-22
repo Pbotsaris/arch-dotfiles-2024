@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/Users/pedro/dev/antfood/labs'
+let g:netrw_dirhist_2='/Users/pedro/dev/antfood/labs/config'
+let g:netrw_dirhist_1='/Users/pedro/dev/antfood/labs'

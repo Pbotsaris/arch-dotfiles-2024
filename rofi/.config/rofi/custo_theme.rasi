@@ -1,0 +1,96 @@
+/*
+ * ROFI Custom theme based on DustFox
+ *
+ * 
+ *
+ * User: Pedro Botsataris
+ * Copyright: *!
+ */
+
+configuration {
+  font: "Inconsolata Nerd Font Mono 13";
+
+  drun {
+    display-name: "";
+  }
+
+  run {
+    display-name: "";
+  }
+
+  window {
+    display-name: "";
+  }
+
+  timeout {
+    delay: 10;
+    action: "kb-cancel";
+  }
+}
+
+* {
+  bg: #16141f;
+  bglighter: #232136;
+  fg: #e0def4;
+  blue: #569fba;
+  purple: #c4a7e7;
+  green: #a3be8c;
+  red: #eb6f92;
+
+  background-color: @bg;
+  text-color: @fg;
+}
+
+
+window {
+  transparency: "real";
+  width: 30%;
+  border-radius: 2px;
+}
+
+mainbox {
+  children: [inputbar, listview];
+  border-radius: 2px;
+}
+
+inputbar {
+  background-color: @bg;
+  border: 1px;              
+  border-color: @purple;    
+  children: [prompt, entry];
+  border-radius: 2px;
+}
+
+entry {
+  background-color: inherit;
+  padding: 12px 4px;
+}
+
+prompt {
+  background-color: inherit;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+listview {
+  lines: 8;
+}
+
+element {
+  children: [element-icon, element-text];
+  text-color: @fg;
+}
+
+element-icon {
+  padding: 10px 10px;
+}
+
+element-text {
+  padding: 10px 0;
+  text-color: inherit;
+}
+
+element-text selected {
+  text-color: @purple;
+}
+

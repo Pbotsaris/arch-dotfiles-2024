@@ -1,0 +1,41 @@
+#!/bin/bash
+
+DATE=$(date +"%Y-%m-%d")
+D="$HOME/.packages/$DATE"
+
+CYAN='\033[0;36m'
+ORANGE='\033[0;33m'
+NC='\033[0m'
+
+echo "Creating new package directory to backup package list:"
+echo -e "-> ${CYAN}""$D""${NC}"
+mkdir -p "$D"
+
+PACMAN="$D/pacman-$DATE.txt"
+PIP="$D/pip-$DATE.txt"
+NPM="$D/npm-$DATE.txt"
+YAY="$D/yay-$DATE.txt"
+GEM="$D/gem-$DATE.txt"
+echo ""
+
+echo -e "Listing pacman and saving to:${CYAN}$PACMAN${NC}"
+sudo pacman -Qe > "$PACMAN" 
+echo "- Done!"
+echo -e "Listing yay and saving to:${CYAN}$YAY${NC}"
+yay -Qe > "$YAY" 
+echo "- Done!"
+
+echo -e "Listing pip and saving to:${CYAN}$PIP${NC}"
+pip list > "$PIP"
+echo "- Done!"
+
+echo -e "Listing npm and saving to:${CYAN}$NPM${NC}"
+npm ls -g > "$NPM"
+echo "- Done!"
+
+echo -e "Listing gems and saving to:${CYAN}$GEM${NC}"
+gem list --local > "$GEM"
+
+echo "- All done!"
+
+
