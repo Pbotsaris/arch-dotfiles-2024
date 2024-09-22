@@ -8,7 +8,8 @@ export EDITOR=nvim
 fpath+=$HOME/.config/zsh/pure
 
 # miniconda3
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+# [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 
 
 # yazi (file manager)
@@ -21,6 +22,15 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# CUDA
+export PATH=/opt/cuda/bin:$PATH
+
+#cudnn
+export LD_LIBRARY_PATH=/usr/lib/cuda:$LD_LIBRARY_PATH
+
+# Add CUDA libraries to LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/cuda/lib64:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 # fzf
 source <(fzf --zsh)

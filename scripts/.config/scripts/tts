@@ -5,7 +5,7 @@
 source /etc/profile.d/conda.sh
 
 # must activate the pb env before running piper which is installed in the pb env
-conda activate pb 
+conda activate piper
 
 ##  substitute punctuation with semicolons
 input=$(xsel)
@@ -15,6 +15,7 @@ output="${output//\./\;}"
 
 echo "$output"
 
+
 echo "$output" | piper \
-  --model en_US-lessac-medium \
-  --output_file - | ffplay -nodisp -autoexit -loglevel quiet -i -
+   --model /home/pedro/models/piper/en_US-lessac-high.onnx \
+   --output_file - | ffplay -nodisp -autoexit -loglevel quiet -i -

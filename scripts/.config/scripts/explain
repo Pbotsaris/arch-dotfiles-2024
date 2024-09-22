@@ -1,0 +1,17 @@
+#!/bin/bash
+
+input="explain the following: $(xsel)"
+
+if [ -z "$1" ] && [ -z "$input" ]; then
+  echo "Usage: explain text"
+  echo "or select text and run the command"
+  exit 1
+fi
+
+if [ -z "$1" ]; then
+   echo "querying for: $input"
+  gh copilot explain "$input"
+  exit 0
+fi
+
+gh copilot explain $1
