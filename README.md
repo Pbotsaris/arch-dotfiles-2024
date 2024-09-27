@@ -52,13 +52,13 @@ using [lighdm-mini-greeter](https://github.com/prikhi/lightdm-mini-greeter)
 
 window system: `x`
 
-compositor: `picom`
-
 font: `Inconsolata Nerd Font Mono`
 
-walpaper manager: `nitrogen`
+walpaper manager: [nitrogen](https://github.com/l3ib/nitrogen)
 
 autojump with `j` and zoxide with `z` (still deciding which one to keep)
+
+[dunst](https://github.com/dunst-project/dunst) for notifications
 
 ## Shell
 
