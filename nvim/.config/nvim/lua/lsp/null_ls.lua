@@ -29,15 +29,15 @@ local sources = {
    formatting.mix,
    formatting.rubocop,
    formatting.prettier,
-   require("none-ls.diagnostics.eslint"), -- this requires none-ls-extras to be installed
+   --require("none-ls.diagnostics.eslint"), -- this requires none-ls-extras to be installed
 
    -- diagnostics
 
-   diagnostics.pylint.with({
-      diagnostics_postprocess = function(diagnostic)
-         diagnostic.code = diagnostic.message_id
-      end,
-   }),
+--   diagnostics.pylint.with({
+--      diagnostics_postprocess = function(diagnostic)
+--         diagnostic.code = diagnostic.message_id
+--      end,
+--   }),
 
    diagnostics.yamllint,
    diagnostics.dotenv_linter,

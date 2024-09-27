@@ -258,6 +258,7 @@ alias luamake=/home/pedro/.lua-ls/lua-language-server/3rd/luamake/luamake
 
 ## RUBY
 export PATH="$PATH:$HOME/.rvm/bin"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.3.1/bin"
 
