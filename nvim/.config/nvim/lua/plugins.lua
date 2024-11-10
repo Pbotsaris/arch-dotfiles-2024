@@ -34,6 +34,12 @@ return packer.startup({
    function(use)
       use("wbthomason/packer.nvim")
 
+      -- Jupyter Notebook
+      --  Must install nbclassic jupyter-console in your env to work
+      --  pip install nbclassic jupyter-console
+      --
+      use { "kiyoon/jupynium.nvim", run = "pip3 install --user ." }
+
       --  User interface
       use({ "akinsho/bufferline.nvim", tag = "*", requires = "kyazdani42/nvim-web-devicons" })
       use({

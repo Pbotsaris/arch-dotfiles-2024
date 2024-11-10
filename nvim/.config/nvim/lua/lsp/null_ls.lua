@@ -28,6 +28,7 @@ local sources = {
    formatting.stylua,
    formatting.mix,
    formatting.rubocop,
+   formatting.erb_format,
    formatting.prettier,
    --require("none-ls.diagnostics.eslint"), -- this requires none-ls-extras to be installed
 
@@ -40,6 +41,7 @@ local sources = {
 --   }),
 
    diagnostics.yamllint,
+   diagnostics.erb_lint,
    diagnostics.dotenv_linter,
 }
 

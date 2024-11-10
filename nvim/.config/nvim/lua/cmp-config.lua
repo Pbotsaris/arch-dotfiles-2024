@@ -108,6 +108,8 @@ local formatting = {
    end,
 }
 
+local compare = cmp.config.compare
+
 -- SETUP
 cmp.setup({
    snippet = {
@@ -118,12 +120,23 @@ cmp.setup({
    mapping = mappings,
    formatting = formatting,
    sources = {
-      { name = "nvim_lsp" },
-      { name = "nvim_lua" },
-      { name = "luasnip" },
-      { name = "buffer" },
-      { name = "path" },
+      { name = "jupynium", priority = 110 }, -- consider higher priority than LSP for jupynium
+      { name = "nvim_lsp", priority = 100 },
+      { name = "nvim_lua", priority = 90 },
+      { name = "luasnip",  priority = 80 },
+      { name = "path",     priority = 70 },
+      { name = "buffer",   priority = 60 },
    },
+
+   sorting = {
+      priority_weight = 1.0,
+      comparators = {
+         compare.score,
+         compare.recently_used,
+         compare.locality,
+      },
+   },
+
    confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,

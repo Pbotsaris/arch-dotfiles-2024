@@ -28,7 +28,7 @@ vim.o.mouse = 'a'
 
 
 -- Providers
-vim.g.python3_host_prog = '/usr/bin/python'
+-- vim.g.python3_host_prog = '/usr/bin/python'
 
 
 -- copilot work with <tab>
