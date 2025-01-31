@@ -34,11 +34,12 @@ return packer.startup({
    function(use)
       use("wbthomason/packer.nvim")
 
-      -- Jupyter Notebook
-      --  Must install nbclassic jupyter-console in your env to work
-      --  pip install nbclassic jupyter-console
-      --
-      use { "kiyoon/jupynium.nvim", run = "pip3 install --user ." }
+      --- Navigation using treesitter
+      use({
+         "nvim-treesitter/nvim-treesitter-textobjects",
+         after = "nvim-treesitter",
+         requires = "nvim-treesitter/nvim-treesitter",
+      })
 
       --  User interface
       use({ "akinsho/bufferline.nvim", tag = "*", requires = "kyazdani42/nvim-web-devicons" })
@@ -95,12 +96,12 @@ return packer.startup({
 
       -- Language specific: Markdown preview
 
-      use({
-         "iamcco/markdown-preview.nvim",
-         run = function()
-            vim.fn["mkdp#util#install"]()
-         end,
-      })
+      -- use({
+      --    "iamcco/markdown-preview.nvim",
+      --    run = function()
+      --       vim.fn["mkdp#util#install"]()
+      --    end,
+      -- })
 
       use({
          "iamcco/markdown-preview.nvim",

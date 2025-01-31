@@ -26,10 +26,11 @@ vim.o.showtabline = 2
 vim.o.signcolumn = 'yes'
 vim.o.mouse = 'a'
 
-
--- Providers
--- vim.g.python3_host_prog = '/usr/bin/python'
-
+-- recognize mjml files
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.mjml",
+  command = "set filetype=html",
+})
 
 -- copilot work with <tab>
 vim.g.copilot_no_tab_map = true
@@ -46,5 +47,3 @@ vim.o.backupcopy = 'yes'
 vim.cmd('au BufWritePre * let &bex = "@" . strftime("%F.%H:%M")')
 vim.o.undodir = vim.env.HOME .. '/.vim/.undo//'
 
--- shows the relative path of the files in the bottom status line
--- let g:python3_host_prog = '/home/pedro/.conda/envs/pb/bin/python'

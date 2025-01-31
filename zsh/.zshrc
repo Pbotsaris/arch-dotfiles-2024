@@ -7,13 +7,16 @@ ZSH_THEME=""
 export EDITOR=nvim
 fpath+=$HOME/.config/zsh/pure
 
+
+# Prevents conflict between system and conda terminal info
+export TERMINFO="/usr/share/terminfo"
+export TERMINFO_DIRS="/usr/share/terminfo"
+
 # miniconda3
-# [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 
 
 # yazi (file manager)
-
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
@@ -109,7 +112,7 @@ source <(fzf --zsh)
 # Add wisely, as too many plugins slow down shell startup.
 
 
-plugins=(git archlinux zsh-syntax-highlighting zsh-autosuggestions autojump dotbare)
+plugins=(git archlinux zsh-syntax-highlighting zsh-autosuggestions dotbare)
 source $ZSH/oh-my-zsh.sh
 
 # testing oxide vs autojump
@@ -207,10 +210,6 @@ bindkey -M vicmd 'd' delete_and_copy_to_clipboard
 bindkey -M vicmd 'D' delete_to_end_of_line_and_copy
 
 
-# set dotbare(dotfiles) to custom folder.
-export DOTBARE_DIR="$HOME/.dotfiles"
-
-
 # for whatever reason I need to export these locale
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -261,4 +260,20 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.3.1/bin"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 

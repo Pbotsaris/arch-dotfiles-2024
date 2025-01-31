@@ -43,6 +43,8 @@ local sources = {
    diagnostics.yamllint,
    diagnostics.erb_lint,
    diagnostics.dotenv_linter,
+   -- elixir
+   diagnostics.credo,
 }
 
 null_ls.setup({
