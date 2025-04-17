@@ -120,7 +120,6 @@ cmp.setup({
    mapping = mappings,
    formatting = formatting,
    sources = {
-      { name = "jupynium", priority = 110 }, -- consider higher priority than LSP for jupynium
       { name = "nvim_lsp", priority = 100 },
       { name = "nvim_lua", priority = 90 },
       { name = "luasnip",  priority = 80 },

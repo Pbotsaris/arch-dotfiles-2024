@@ -1,4 +1,3 @@
 return {
-  cmd = { "/home/pedro/go/bin/sqls", "-config", "/home/pedro/.config/sqls/config.yml"
-  },
+   cmd = { "/home/pedro/go/bins/sqls", "-config", vim.fn.getcwd() .. "/config.yml" },
 }

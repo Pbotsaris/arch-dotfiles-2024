@@ -36,13 +36,4 @@ wk.add({
    { "<leader>h", ":sp<CR>",                                                desc = "Horizontal split" },
    { "<leader>v", ":vs<CR>",                                                desc = "Vertical split" },
    { "<leader>m", "<cmd>lua vim.lsp.buf.format()<CR>",                      desc = "Format" },
-   { "<leader>j", group = "Jupynium",                                       desc = "Jupynium Keymaps" },
-   {
-      "<leader>js",
-      ":JupyniumStartAndAttachToServer <CR>",
-      desc = "Start the Jupynium Server",
-   },
-
-   { "<leader>jk", ":JupyniumKernelHover<CR>", desc = "Jupynium hover (inspect)" },
-   { "<leader>x", ":JupyniumExecuteSelectedCells <CR>", mode={"n", "x"}, desc = "Executes in a cell in Jupynium" },
-}, opts)
+   }, opts)

@@ -237,7 +237,7 @@ source /usr/share/nvm/init-nvm.sh
  alias i3-config="vim ~/dotfiles/i3/.config/i3/config"
  alias term-config="vim ~/dotfiles/alacritty/.config/alacritty/alacritty.toml"
  alias vim-config="vim ~/dotfiles/nvim/.config/nvim/init.lua"
- alias nvim-config="vim ~/dotfiles/nvim/.confi/gnvim/init.lua"
+ alias nvim-config="vim ~/dotfiles/nvim/.config/nvim/init.lua"
  alias bar-config="vim ~/dotfiles/polybar/.config/polybar"
  alias git-config="vim ~/dotfiles/git/.gitconfig"
  alias rofi-config="nvim ~/dotfiles/rofi/.config/rofi/config.rasi"

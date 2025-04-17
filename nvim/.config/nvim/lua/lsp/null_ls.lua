@@ -29,7 +29,12 @@ local sources = {
    formatting.mix,
    formatting.rubocop,
    formatting.erb_format,
-   formatting.prettier,
+   formatting.prettier.with({
+      extra_args = {
+         "--print-width", "120",
+      }
+
+   }),
    --require("none-ls.diagnostics.eslint"), -- this requires none-ls-extras to be installed
 
    -- diagnostics
