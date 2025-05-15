@@ -1,43 +1,39 @@
-local status_ok, lspconfig = pcall(require, "lspconfig")
-
-if not status_ok then
-  print("Lspconfig not found")
-  return
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then
+   vim.notify("lspconfig not found", vim.log.levels.ERROR)
+   return
 end
 
-local mason_ok, mason = pcall(require, "mason")
-
-if not mason_ok then
-  print("Mason not found")
-  return
+local ok, mason = pcall(require, "mason")
+if not ok then
+   vim.notify("mason not found", vim.log.levels.ERROR)
+   return
 end
 
-local mason_lspconfig_ok, mason_lsconfig = pcall(require, "mason-lspconfig")
-
-if not mason_lspconfig_ok then
-  print("Mason lspconfig not found")
-  return
+local ok, mlc = pcall(require, "mason-lspconfig")
+if not ok then
+   vim.notify("mason-lspconfig not found", vim.log.levels.ERROR)
+   return
 end
 
-local M = {}
+mason.setup({})
 
-function M.setup()
-  mason.setup({})
-  mason_lsconfig.setup()
+mlc.setup({
+   automatic_enable = true,
+})
 
-  mason_lsconfig.setup_handlers({
-    function(server_name)
-      local has_settings, settings = pcall(require, "lsp.settings." .. server_name)
-      if has_settings then
-        lspconfig[server_name].setup(settings)
-      else
-        lspconfig[server_name].setup({})
-      end
-      require("lsp.lsp_setup").setup()
-      require("lsp.null_ls")
-    end,
-  })
+require("lsp.lsp_setup").setup()
+
+local servers = mlc.get_installed_servers()
+for _, name in ipairs(servers) do
+   local has_cfg, cfg = pcall(require, "lsp.settings." .. name)
+   local opts = vim.tbl_deep_extend(
+      "force",
+      require("lsp.lsp_setup").get_opts(),
+      (has_cfg and cfg) or {}
+   )
+   lspconfig[name].setup(opts)
 end
 
-return M
-
+-- 5) Finally, start null-ls
+require("lsp.null_ls")

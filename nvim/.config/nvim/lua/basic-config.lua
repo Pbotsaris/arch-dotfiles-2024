@@ -1,9 +1,9 @@
 -- use :h options to see all ops
 
 vim.wo.number = true
-vim.o.clipboard = "unnamedplus"      -- yanks and delete to + register therefore os clipboard
-vim.o.cmdheight = 2                  -- more space to display in nvim command line (bottom)
-vim.o.timeoutlen = 100                -- for search next word not too be too slow
+vim.o.clipboard = "unnamedplus" -- yanks and delete to + register therefore os clipboard
+vim.o.cmdheight = 2 -- more space to display in nvim command line (bottom)
+vim.o.timeoutlen = 100 -- for search next word not too be too slow
 vim.o.smartcase = true
 vim.o.smartindent = true
 vim.o.autoindent = true
@@ -21,29 +21,41 @@ vim.o.visualbell = false
 vim.o.numberwidth = 4
 vim.o.termguicolors = true
 
-vim.o.colorcolumn = '120'
+vim.o.colorcolumn = "120"
 vim.o.showtabline = 2
-vim.o.signcolumn = 'yes'
-vim.o.mouse = 'a'
+vim.o.signcolumn = "yes"
+vim.o.mouse = "a"
 
 -- recognize mjml files
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-  pattern = "*.mjml",
-  command = "set filetype=html",
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.mjml",
+	command = "set filetype=html",
 })
 
 -- copilot work with <tab>
 vim.g.copilot_no_tab_map = true
 vim.o.expandtab = true
-vim.o.encoding = 'UTF-8'
+vim.o.encoding = "UTF-8"
 vim.o.softtabstop = 3
 vim.o.tabstop = 3
 vim.o.shiftwidth = 3
-vim.o.tags = 'tags'
+vim.o.tags = "tags"
 vim.o.hidden = false
 vim.o.backup = true
-vim.o.backupdir = vim.env.HOME ..  '/.vim/.backup//'
-vim.o.backupcopy = 'yes'
+vim.o.backupdir = vim.env.HOME .. "/.vim/.backup//"
+vim.o.backupcopy = "yes"
 vim.cmd('au BufWritePre * let &bex = "@" . strftime("%F.%H:%M")')
-vim.o.undodir = vim.env.HOME .. '/.vim/.undo//'
+vim.o.undodir = vim.env.HOME .. "/.vim/.undo//"
+
+
+-- This is a workaround for a bug in treesitter where it doesn't highlight elixir files
+local ts_hl_group = vim.api.nvim_create_augroup("TSHighlightGroup", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group    = ts_hl_group,
+  pattern  = "elixir",
+  callback = function()
+    vim.cmd("TSBufEnable highlight")
+  end,
+})
 
